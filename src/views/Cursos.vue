@@ -1,17 +1,26 @@
 <template>
-  <div class="course">
+  <div class="courses">
     <div v-if="loading">
       <PageLoading />
     </div>
-    <div v-if="data">
-      <h2>{{ data.titulo }}</h2>
-      <p>{{ data.descricao }}</p>
-
-      <article v-for="(item, index) in data.cursos" :key="index">
-        <h3>{{ item.nome }}</h3>
-        <p>{{ item.descricao }}</p>
-      </article>
-    </div>
+    <transition>
+      <section v-if="data" class="conteudo">
+        <header>
+          <h1>{{data.titulo}}</h1>
+          <p>{{data.descricao}}</p>
+        </header>
+        <section>
+          <article v-for="curso in data.cursos" :key="curso.id">
+            <h2>
+              <router-link
+                :to="{name: 'curso', params: {curso: curso.id}}"
+              >{{curso.nome}} – {{curso.totalAulas}} aulas | {{curso.horas}} horas</router-link>
+            </h2>
+            <p>{{curso.descricao}}</p>
+          </article>
+        </section>
+      </section>
+    </transition>
   </div>
 </template>
 
@@ -26,3 +35,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>

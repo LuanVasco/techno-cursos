@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/contato',
-    name: 'Contato',
+    name: 'contato',
     component: () => import(
       /* webpackChunkName: "about" */ 
       '../views/Contato.vue'
@@ -20,10 +20,19 @@ const routes = [
   },
   {
     path: '/cursos',
-    name: 'Cursos',
+    name: 'cursos',
     component: () => import(
       /* webpackChunkName: "about" */ 
       '../views/Cursos.vue'
+    )
+  },
+  {
+    path: '/cursos/:curso',
+    name: 'curso',
+    props: true,
+    component: () => import(
+      /* webpackChunkName: "about" */ 
+      '../views/Curso.vue'
     )
   }
 ]
