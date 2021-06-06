@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Aula from '../views/Aula.vue'
 
 Vue.use(VueRouter)
 
@@ -33,7 +34,15 @@ const routes = [
     component: () => import(
       /* webpackChunkName: "about" */ 
       '../views/Curso.vue'
-    )
+    ),
+    children: [
+      {
+        path: ":aula",
+        name: "aula",
+        props: true,
+        component: Aula,
+      }
+    ]
   }
 ]
 

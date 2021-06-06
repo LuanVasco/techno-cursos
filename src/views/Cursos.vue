@@ -1,5 +1,5 @@
 <template>
-  <div class="courses">
+  <div>
     <div v-if="loading">
       <PageLoading />
     </div>
@@ -10,7 +10,7 @@
           <p>{{data.descricao}}</p>
         </header>
         <section>
-          <article v-for="curso in data.cursos" :key="curso.id">
+          <article v-for="curso in data.cursos" :key="curso.id" class="cursos-list">
             <h2>
               <router-link
                 :to="{name: 'curso', params: {curso: curso.id}}"
@@ -37,4 +37,7 @@ export default {
 </script>
 
 <style>
+.cursos-list {
+  margin-bottom: 40px;
+}
 </style>
